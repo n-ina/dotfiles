@@ -1,0 +1,14 @@
+[alias]
+	ll = log --oneline --graph --decorate --all
+	co = checkout
+	br = branch
+	st = status
+[credential]
+	helper = cache
+[user]
+	email = nao.inagaki@dragon.jp
+	name = ea-inagaki
+[color]
+	ui = auto
+[hub]
+	protocol = https
