@@ -1,0 +1,109 @@
+php55: stable 5.5.23 (bottled), HEAD
+https://php.net
+/usr/local/Cellar/php55/5.5.23 (497 files, 50M) *
+  Poured from bottle
+From: https://github.com/homebrew/homebrew-php/blob/master/Formula/php55.rb
+==> Dependencies
+Required: freetype ✔, gettext ✔, homebrew/dupes/zlib ✔, icu4c ✔, jpeg ✔, libpng ✔, openssl ✔, unixodbc ✔
+Optional: enchant ✘, gmp ✘
+==> Options
+--homebrew-apxs
+	Build against apxs in Homebrew prefix
+--with-cgi
+	Enable building of the CGI executable (implies --without-fpm)
+--with-debug
+	Compile with debugging symbols
+--with-enchant
+	Build with enchant support
+--with-gmp
+	Build with gmp support
+--with-homebrew-curl
+	Include Curl support via Homebrew
+--with-homebrew-libxslt
+	Include LibXSLT support via Homebrew
+--with-imap
+	Include IMAP extension
+--with-libmysql
+	Include (old-style) libmysql support instead of mysqlnd
+--with-mssql
+	Include MSSQL-DB support
+--with-pdo-oci
+	Include Oracle databases (requries ORACLE_HOME be set)
+--with-phpdbg
+	Enable building of the phpdbg SAPI executable (PHP 5.4 and above)
+--with-postgresql
+	Build with postgresql support
+--with-snmp
+	Build with SNMP support
+--with-thread-safety
+	Build with thread safety
+--with-tidy
+	Include Tidy support
+--without-apache
+	Disable building of shared Apache 2.0 Handler module
+--without-bz2
+	Build without bz2 support
+--without-fpm
+	Disable building of the fpm SAPI executable
+--without-ldap
+	Build without LDAP support
+--without-mysql
+	Remove MySQL/MariaDB support
+--without-pcntl
+	Build without Process Control support
+--without-pear
+	Build without PEAR
+--HEAD
+	Install HEAD version
+==> Caveats
+To enable PHP in Apache add the following to httpd.conf and restart Apache:
+    LoadModule php5_module    /usr/local/opt/php55/libexec/apache2/libphp5.so
+
+The php.ini file can be found in:
+    /usr/local/etc/php/5.5/php.ini
+
+✩✩✩✩ PEAR ✩✩✩✩
+
+If PEAR complains about permissions, 'fix' the default PEAR permissions and config:
+    chmod -R ug+w /usr/local/Cellar/php55/5.5.23/lib/php
+    pear config-set php_ini /usr/local/etc/php/5.5/php.ini system
+
+✩✩✩✩ Extensions ✩✩✩✩
+
+If you are having issues with custom extension compiling, ensure that
+you are using the brew version, by placing /usr/local/bin before /usr/sbin in your PATH:
+
+      PATH="/usr/local/bin:$PATH"
+
+PHP55 Extensions will always be compiled against this PHP. Please install them
+using --without-homebrew-php to enable compiling against system PHP.
+
+✩✩✩✩ PHP CLI ✩✩✩✩
+
+If you wish to swap the PHP you use on the command line, you should add the following to ~/.bashrc,
+~/.zshrc, ~/.profile or your shell's equivalent configuration file:
+
+      export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
+
+✩✩✩✩ FPM ✩✩✩✩
+
+To launch php-fpm on startup:
+    mkdir -p ~/Library/LaunchAgents
+    cp /usr/local/opt/php55/homebrew.mxcl.php55.plist ~/Library/LaunchAgents/
+    launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.php55.plist
+
+The control script is located at /usr/local/opt/php55/sbin/php55-fpm
+
+OS X 10.8 and newer come with php-fpm pre-installed, to ensure you are using the brew version you need to make sure /usr/local/sbin is before /usr/sbin in your PATH:
+
+  PATH="/usr/local/sbin:$PATH"
+
+You may also need to edit the plist to use the correct "UserName".
+
+Please note that the plist was called 'homebrew-php.josegonzalez.php55.plist' in old versions
+of this formula.
+
+To have launchd start php55 at login:
+    ln -sfv /usr/local/opt/php55/*.plist ~/Library/LaunchAgents
+Then to load php55 now:
+    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.php55.plist

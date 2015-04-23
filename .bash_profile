@@ -10,3 +10,4 @@ fi
 PATH=$PATH:$HOME/.local/bin:$HOME/bin
 
 export PATH
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"

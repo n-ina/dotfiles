@@ -1,0 +1,13 @@
+sublime-text: 2.0.2
+Sublime Text
+http://www.sublimetext.com/2
+/opt/homebrew-cask/Caskroom/sublime-text/2.0.2 (124 files, 26M)
+https://github.com/caskroom/homebrew-cask/blob/master/Casks/sublime-text.rb
+==> Contents
+  Sublime Text 2.app (app)
+  Sublime Text 2.app/Contents/SharedSupport/bin/subl (binary)
+==> Caveats
+Cask sublime-text installs files under "/usr/local".  The presence of such
+files can cause warnings when running "brew doctor", which is considered
+to be a bug in homebrew-cask.
+
