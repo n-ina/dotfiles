@@ -6,11 +6,13 @@
     homebrew_taps:
       - homebrew/binary
       - homebrew/dupes
+      - homebrew/php
       - caskroom/cask
       - railwaycat/emacsmacport
       - sanemat/font
     homebrew_packages:
-      - { name: php55 }
+      - { name: php56 }
+      - { name: composer }
       - { name: readline }
       - { name: openssl }
       - { name: openssl, state: linked, install_options: force }
@@ -60,6 +62,7 @@
       - { name: gibo }
       - { name: source-highlight }
       - { name: vim }
+      - { name: bash-completion }
     homebrew_cask_packages:
       - { name: iterm2 }
       - { name: firefox }
@@ -81,10 +84,11 @@
       - { name: seashore }
       - { name: atom }
       - { name: kobito }
-      - { name: sublime-text }
+      - { name: sublime-text3 }
       - { name: intellij-idea }
       - { name: vagrant }
       - { name: virtualbox }
+      - { name: sqwiggle }
 
   tasks:
     - name: homebrew の tap リポジトリを追加
